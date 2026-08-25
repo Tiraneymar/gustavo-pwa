@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core"
 
-@Injectable() // permite injetar esse serviço em outra classe automaticamente.
+@Injectable({ providedIn: 'root' }) // permite injetar esse serviço em outra classe automaticamente.
 export class CapoeiraService {
 
     obterTreinos() {
