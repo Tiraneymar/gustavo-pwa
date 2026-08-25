@@ -1,0 +1,33 @@
+name: Deploy Angular to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # Mude para 'master' se seu projeto usar a nomenclatura antiga
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24 # Versão do Node condizente com seu projeto
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Build do projeto
+        # Substitua <usuario> e <nome-do-repositorio> pelos seus dados reais
+        run: npx ng build --configuration=production --base-href "https://Ozaru.github.io/gustavo-pwa/"
+
+      - name: Deploy para o GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/gustavo-pwa/browser # Pasta gerada pelo Angular (confirme se o nome está correto na sua pasta dist)
+          branch: gh-pages # Branch onde os arquivos compilados serão salvos

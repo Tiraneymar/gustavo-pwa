@@ -1,0 +1,11 @@
+<div class="row gap-2 p-2">
+    @for (treino of treinos; track $index) {
+    <div class="col card btn btn-light" (click)="selecionarTreino($index)"
+        [class]="{'active': $index == treinoSelecionado}">
+        <div class="card-img-top" [style]="{'height': '50px', 'background-color': treino.corCorda}"></div>
+        <div class="card-body">
+            <p class="card-text">{{treino.nome}}</p>
+        </div>
+    </div>
+    }
+</div>

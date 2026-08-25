@@ -19,6 +19,19 @@ export class CapoeiraModel { // classe que representa um treino.
 
 const treinos: CapoeiraModel[] = [ // lista fixa de treinos disponiveis.
     {
+        nome: 'Teste (Teste)',
+        corCorda: 'black',
+        tempoTreino: 1,
+        tempoDescanso: 1,
+        movimentos: [
+            'movimento 1',
+            'movimento 2',
+            'movimento 3',
+            'movimento 4',
+            'movimento 5',
+        ],
+    },
+    {
         nome: 'Corda Crua (Iniciante)',
         corCorda: 'grey',
         tempoTreino: 30,
@@ -48,7 +61,7 @@ const treinos: CapoeiraModel[] = [ // lista fixa de treinos disponiveis.
     },
     {
         nome: 'Corda Amarela (Intermediário)',
-        corCorda: 'amber',
+        corCorda: 'yellow',
         tempoTreino: 45,
         tempoDescanso: 15,
         movimentos: [
@@ -75,7 +88,7 @@ const treinos: CapoeiraModel[] = [ // lista fixa de treinos disponiveis.
         ],
     },
     {
-        nome: 'Corda de Mestre (Vermelha/Branca)',
+        nome: 'Corda Vermelha/Branca (Mestre)',
         corCorda: 'red',
         tempoTreino: 60,
         tempoDescanso: 10,

@@ -1,11 +1,28 @@
-<div class="card">
-    <div class="card-body">
-        <p>{{treinoSelecionado|json}}</p>
+<div class="container">
+    <app-treino-select [treinos]="treinos" [treinoSelecionado]="treinoSelecionado"
+        (selecionar)="selecionarTreino($event)"></app-treino-select>
+    <hr>
+    @if (treinoSelecionado != undefined && movimentoSelecionado != undefined) {
+    <div class="row">
+        <div class="col-auto">
+            <ul class="nav nav-pills flex-column">
+                @for(movimento of treinos[treinoSelecionado].movimentos; track $index) {
+                <li class="nav-item">
+                    <a class="nav-link btn btn-light w-100" [class]="{'active':$index == movimentoSelecionado}">{{movimento}}</a>
+                </li>
+                }
+            </ul>
+        </div>
+        <div class="col">
+            <h3>Timer: {{timer()}}</h3>
+            <p>
+                <button class="btn btn-primary" (click)="iniciarTimer()" [disabled]="timer() == 0 || !pausado">iniciar</button>
+                <button class="btn btn-primary ms-1" (click)="pausarTimer()" [disabled]="timer() == 0 || pausado">pausar</button>
+                <button class="btn btn-primary ms-1" (click)="resetarTimer()">reiniciar</button>
+                <button class="btn btn-primary ms-1" (click)="avancar()" [disabled]="timer() != 0">avançar</button>
+            </p>
+            <hr>
+        </div>
     </div>
+    }
 </div>
-<h3>Timer: {{timer()}}</h3>
-<p>
-    <button class="btn btn-primary" (click)="iniciarTimer()">iniciar</button>
-    <button class="btn btn-primary ms-1" (click)="pausarTimer()">pausar</button>
-    <button class="btn btn-primary ms-1" (click)="resetarTimer()">resetar</button>
-</p>
